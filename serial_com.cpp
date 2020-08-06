@@ -23,7 +23,7 @@ void serial_com::run()
 void serial_com::openSerialPort()
 {
        bool arduino_is_available = false;
-       QString arduino_uno_port_name;
+       QString ArduinoNanoEvery_port_name;
         //
         foreach(const QSerialPortInfo &serialPortInfo, QSerialPortInfo::availablePorts())
         {
@@ -31,17 +31,17 @@ void serial_com::openSerialPort()
             if(serialPortInfo.hasProductIdentifier() && serialPortInfo.hasVendorIdentifier())
             {
                 //  check if the product ID and the vendor ID match those of the arduino uno
-                if((serialPortInfo.productIdentifier() == arduino_uno_product_id) && (serialPortInfo.vendorIdentifier() == arduino_uno_vendor_id))
+                if((serialPortInfo.productIdentifier() == ArduinoNanoEvery_product_id) && (serialPortInfo.vendorIdentifier() == ArduinoNanoEvery_vendor_id))
                 {
                     arduino_is_available = true; //    arduino uno is available on this port
-                    arduino_uno_port_name = serialPortInfo.portName();
+                    ArduinoNanoEvery_port_name = serialPortInfo.portName();
                 }
             }
         }
         if(arduino_is_available)
         {
-        serial.setPortName(arduino_uno_port_name);
-        //std::cout<< arduino_uno_port_name.toStdString() << std::endl;
+        serial.setPortName(ArduinoNanoEvery_port_name);
+        //std::cout<< ArduinoNanoEvery_port_name.toStdString() << std::endl;
         s_errorFlag=false;
         }
         else
